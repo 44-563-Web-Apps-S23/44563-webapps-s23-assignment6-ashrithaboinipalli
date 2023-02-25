@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Painter Html
+    </title>
+</head>
+<html>
+ 
+<body>
+
+<h1>Painter entry by Ashritha Boinipalli</h1>
+<h2>Getting input</h2>
+
+<form>
+    <label for="form1_pwd">The hidden painter name </label>
+    <input type ="password" id="form1_pwd" name="form1_pwd" value="Monet"> <br>
+
+    <label for="form1_painter">Guess the painter </label>
+    <input type ="text" id="form1_painter" name="form1_painter" autofocus> <br>
+
+    <input type="button" onclick="checkPainter()" value="Check the guess">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+good=0
+oops=0
+function checkPainter (){
+    console.log("Getting form values")
+    pwd = document.getElementById("form1_pwd").value
+    painter = document.getElementById("form1_painter").value
+    //confirmed = confirm("Are these the values? "+age+" and "+nick)
+    
+    out = document.getElementById("result")
+    if(pwd == painter){
+        good++
+        out.innerHTML = "good/oops :" + good + "/" + oops
+        alert("You got it right")
+    } else {
+        oops++
+        out.innerHTML = "good/oops :" + good + "/" + oops
+        alert("Sorry")
+    }
+}
+</script>
+
+</body>
+</html> 
