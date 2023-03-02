@@ -31,6 +31,7 @@
 good=0
 oops=0
 function checkPainter (){
+    if (oops < 10) {
     console.log("Getting form values")
     pwd = document.getElementById("form1_pwd").value
     painter = document.getElementById("form1_painter").value
@@ -46,7 +47,14 @@ function checkPainter (){
         out.innerHTML = "good/oops :" + good + "/" + oops
         alert("Sorry")
     }
+}   
+else {
+                callAlert()
+            }
 }
+function callAlert() {
+            alert("Sorry,ran out of guesses.");
+        }
 
 var useImage = 1
         function selectImage() {
