@@ -11,34 +11,41 @@
 <h2>Getting input</h2>
 
 <form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+    <input type="checkbox" id="dark" name="ADD ON1" value="True"><label for="cb1_dark">Dark Chocolate</label></br>
+    <input type="checkbox" id="nuts" name="ADD ON2" value="True"><label for="cb1_nuts">Nuts</label></br>
+    <input type="checkbox" id="chewy" name="ADD ON3" value="False"><label for="cb1_chewy">Chewy</label></br>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
-
-    <input type="button" onclick="resolveForm()" value="Get values from form">
-</form>
+    <input type="button" class="btn btn-primary" onclick="selectBox()" value="Select a box">
+  </form>
 
 
-<p id="result">This text will be replaced </p>
+<p id="output">Results will appear here </p>
+
+<div class="form-group">
+    <form>
+      <label for="size">Enter the size </label><input type ="text" id="size" value="size" name="size" autofocus> <br>
+      <label for="price">Enter price </label><input type ="text" id="price" name="price" autofocus> <br>
+  
+      <input type="button" class="btn btn-primary" onclick="updateBox()" value="Update the box">
+  </form>
+  </div>
+  <p id="output1">Results will appear here </p>
 
 <script> 
 
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
+my_candy_box={};
+function selectBox(){
+    my_candy_box ={};
+    my_candy_box.dark=document.getElementById("dark").checked;
+    my_candy_box.nuts=document.getElementById("nuts").checked;
+    my_candy_box.chewy=document.getElementById("chewy").checked;
+    document.getElementById("output").innerHTML=JSON.stringify(my_candy_box);
+}
+function updateBox(){
+   my_candy_box.size=document.getElementById("size").value;
+   my_candy_box.price=document.getElementById("price").value;
+   document.getElementById("output1").innerHTML=JSON.stringify(my_candy_box);
 }
 </script>
-
 </body>
 </html> 
