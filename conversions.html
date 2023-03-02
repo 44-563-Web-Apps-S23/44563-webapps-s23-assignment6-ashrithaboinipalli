@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Conversions</title>
+    </head>
+<body>
+<h1>Ashritha Boinipalli shows currency conversions</h1>
+
+<h2>Getting input</h2>
+
+<form>
+    <label for="base">Enter base amount</label>
+    <input type ="number" id="base" name="base" value=50> <br>
+
+    <label for="conversions">Enter conversion rate</label>
+    <input type ="number" id="conversions" name="conversions" value=35> <br>
+
+    <input type="button" class = "btn btn-primary" onclick="convert()" value="Show conversions">
+</form>
+
+<p id="result">Results will appear here </p>
+
+<form>
+    <div class="form-group">
+        <input type="radio" name="action" id="mean" name="average" value="mean">
+        <label for="mean">mean</label><br>
+        <input type="radio" name="action" id="max" name="max" value="maximum">
+        <label for="max">max</label><br>
+        <input type="radio" name="action" id="min" name="min" value="minimum">
+        <label for="min">min</label><br>
+        <input type="button" class="btn btn-primary" onclick="chooseOp()" value="Get values from radio group">
+</form>
+
+<p id="result1">Results will appear here </p>
+
+
+<script> 
+
+function convert () {   
+    let base=document.getElementById("base").value;
+    let conversions=document.getElementById("conversions").value;
+    let toShow="";
+        for (let i = 0; i < 5; i++) {
+            temp = base + " is " + Math.round(base * conversions * 10) / 10;
+            toShow = toShow + temp + "; ";
+            base = base * 2;
+        }
+    document.getElementById("result").innerHTML="Conversions are: "+toShow;
+    }
+
+function chooseOp() {
+        let base = document.getElementById("base").value;
+        let conversions = document.getElementById("conversions").value;
+        let mean = document.getElementById("mean").checked;
+        let max = document.getElementById("max").checked;
+        let min = document.getElementById("min").checked;
+        if (mean) {
+            document.getElementById("result1").innerHTML = 'Mean of ' + base + ' and ' + conversions + ' is ' + (parseInt(base) + parseInt(conversions)) / 2;
+        }
+        else if (max) {
+            document.getElementById("result1").innerHTML = 'Max of ' + base + ' and ' + conversions + ' is ' + Math.max(base, conversions);
+        }
+        else if (min) {
+            document.getElementById("result1").innerHTML = 'Min of ' + base + ' and ' + conversions + ' is ' + Math.min(base, conversions);
+        }
+    }
+</script>
+
+</body>
+</html> 
